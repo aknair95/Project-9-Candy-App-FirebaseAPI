@@ -6,7 +6,20 @@ const CartProvider=(props) =>{
 
     const [candys,updateCandys]=useState(props.candyDetails);    
     
-  
+    const addItemToCartAPI= async (updatedCandyDetails) =>{
+        try{ 
+           await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json",{
+            updatedCandyDetails: updatedCandyDetails
+             }); 
+         } catch(error){
+           console.log(error);
+         }
+       }
+     
+       // useEffect hook for post request to Firebase
+       useEffect(() =>{
+        addItemToCartAPI();
+       },[addItemToCartAPI])
     
     const addItemToCartHandler=(item,Qty) =>{
         const updatedCandyDetails=props.candyDetails.map((element) =>{
@@ -19,7 +32,20 @@ const CartProvider=(props) =>{
         addItemToCartAPI(updatedCandyDetails);  
     }
 
-  
+    const removeItemToCartAPI= async (updatedCandyDetails) =>{
+        try{ 
+           await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json",{
+            updatedCandyDetails: updatedCandyDetails
+             }); 
+         } catch(error){
+           console.log(error);
+         }
+       }
+     
+       // useEffect hook for post request to Firebase
+       useEffect(() =>{
+        removeItemToCartAPI();
+       },[removeItemToCartAPI])
 
     const removeItemFromCartHandler=(candy,Qty) =>{
         const updatedCandyDetails=props.candyDetails.map((element) =>{
