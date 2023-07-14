@@ -1,0 +1,58 @@
+.form-control{
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 100%;
+    max-width: 60rem;
+    display: block;
+  }
+
+  .form-control h2 {
+    font-weight: bolder;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 30px;
+  }
+  
+  .form-control label {
+    display:block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    height: 50%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 0.15rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control input:focus {
+    outline: none;
+    border-color: #4f005f;
+  }
+
+  .form-control button {
+    margin-left: 25rem;
+    font: inherit;
+    border: 1px solid #4f005f;
+    border-radius: 7px;
+    background: #4f005f;
+    color: white;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+  }
+  
+  .form-control 
+   button:hover,
+   button:active {
+    background: #741188;
+    border-color: #741188;
+  }
+  
+  .form-control button:focus {
+    outline: none;
+  }

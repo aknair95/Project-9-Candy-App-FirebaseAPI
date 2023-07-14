@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Cart from './components/cart/cart';
+import { useState } from 'react';
+import Header from './components/layout/header';
+import CartProvider from './store/cartProvider';
+import CandysAvailable from './components/candy/candysAvailable';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [candyDetails,updateCandyDetails]= useState([]);
+
+  const [cartStatus,updateCartStatus]= useState(false);
+
+  const cartShowHandler=() =>{
+    updateCartStatus(true);
+  }
+
+  const cartHideHandler=() =>{
+    updateCartStatus(false);
+  }
+
+  const addCandyDetails=(newCandy) =>{
+    updateCandyDetails((prevCandyDetails) =>{
+      return ([ ...prevCandyDetails,newCandy]);
+    });
+  }
+
+  return(
+    <CartProvider candyDetails={candyDetails}>
+      {cartStatus && <Cart onClose={cartHideHandler}/>}
+      <Header onAddCandyData={addCandyDetails} onClickCart={cartShowHandler}/>
+      <CandysAvailable candysAvailable={candyDetails}/> 
+    </CartProvider> 
+  )
 }
 
 export default App;
