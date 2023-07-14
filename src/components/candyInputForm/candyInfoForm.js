@@ -3,7 +3,6 @@ import { useRef } from "react";
 import Card from "../UI/card";
 import classes from "./candyInfoForm.module.css";
 
-
 const CandyInfoForm=(props) =>{
     
     const candyNameRef=useRef();
@@ -18,7 +17,7 @@ const CandyInfoForm=(props) =>{
       
         const newCandyData={name: enteredName,description: enteredDescription,price: enteredPrice,qty: 0};
         props.onAddCandyData(newCandyData);
-    
+       
         candyNameRef.current.value="";
         candyDescriptionRef.current.value="";
         candyPriceRef.current.value="";

@@ -16,7 +16,7 @@ const CartProvider=(props) =>{
          }
        }
      
-       // useEffect hook for post request to Firebase
+       // useEffect hook for patch request to Firebase
        useEffect(() =>{
         addItemToCartAPI();
        },[addItemToCartAPI])
@@ -42,7 +42,7 @@ const CartProvider=(props) =>{
          }
        }
      
-       // useEffect hook for post request to Firebase
+       // useEffect hook for patch request to Firebase
        useEffect(() =>{
         removeItemToCartAPI();
        },[removeItemToCartAPI])
