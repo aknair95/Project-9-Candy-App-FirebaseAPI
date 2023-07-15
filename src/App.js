@@ -7,6 +7,7 @@ import CandysAvailable from './components/candy/candysAvailable';
 import axios from "axios";
 
 function App() {
+  // state for updating new candy's added(Candys avaialable list)
   const [candyDetails,updateCandyDetails]= useState([]);
 
   const [cartStatus,updateCartStatus]= useState(false);
@@ -18,6 +19,19 @@ function App() {
   const cartHideHandler=() =>{
     updateCartStatus(false);
   }
+
+  useEffect(() =>{
+    const getCandysAPI= async () =>{
+        try{
+            const response=await axios.get("https://medicine-shop-4c668-default-rtdb.firebaseio.com/candys.json");
+            updateCandyDetails(response.data.newCandyData);
+        } catch(error){
+            console.log(error);
+        }
+    }     
+    getCandysAPI();
+},[]);   
+
 
   const addNewCandyAPI= async (newCandyData) =>{
     try{ 
