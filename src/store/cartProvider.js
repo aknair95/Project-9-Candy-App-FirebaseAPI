@@ -4,7 +4,19 @@ import axios from "axios";
 
 const CartProvider=(props) =>{
 
-    const [candys,updateCandys]=useState(props.candyDetails);    
+    const [candys,updateCandys]=useState(props.candyDetails); 
+    
+    useEffect(() =>{
+        const getCartItemsAPI= async () =>{
+            try{
+                const response=await axios.get("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json");
+                updateCandys(response.data.updatedCandyDetails);
+            } catch(error){
+                console.log(error);
+            }
+        }     
+        getCartItemsAPI();
+    },[]);   
     
     const addItemToCartAPI= async (updatedCandyDetails) =>{
         try{ 
