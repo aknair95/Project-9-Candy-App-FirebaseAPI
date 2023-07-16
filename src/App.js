@@ -20,6 +20,7 @@ function App() {
     updateCartStatus(false);
   }
 
+  //HTTP GET FOR FETCHING CANDY DETAILS FROM FIREBASE
   useEffect(() =>{
     const getCandysAPI= async () =>{
         try{
@@ -31,7 +32,6 @@ function App() {
     }     
     getCandysAPI();
 },[]);   
-
 
   const addNewCandyAPI= async (newCandyData) =>{
     try{ 

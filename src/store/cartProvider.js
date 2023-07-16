@@ -34,7 +34,7 @@ const CartProvider=(props) =>{
        },[addItemToCartAPI])
     
     const addItemToCartHandler=(item,Qty) =>{
-        const updatedCandyDetails=props.candyDetails.map((element) =>{
+        const updatedCandyDetails=candys.map((element) =>{
             if(element.name===item.name){
                 element.qty=Number(element.qty)+Number(Qty);        
             }
@@ -60,7 +60,7 @@ const CartProvider=(props) =>{
        },[removeItemToCartAPI])
 
     const removeItemFromCartHandler=(candy,Qty) =>{
-        const updatedCandyDetails=props.candyDetails.map((element) =>{
+        const updatedCandyDetails=candys.map((element) =>{
             if(element.name===candy.name){
                 element.qty=Number(element.qty)-Number(Qty);               
             }
