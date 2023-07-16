@@ -22,9 +22,12 @@ const CartProvider=(props) =>{
     
     const addItemToCartAPI= async (updatedCandyDetails) =>{
         try{ 
-           await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json",{
-            updatedCandyDetails: updatedCandyDetails
-             }); 
+            await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json",{
+                updatedCandyDetails: updatedCandyDetails
+                });
+            await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/candys.json",{
+                newCandyData: updatedCandyDetails
+                });   
          } catch(error){
            console.log(error);
          }
@@ -36,22 +39,25 @@ const CartProvider=(props) =>{
        },[addItemToCartAPI])
     
     const addItemToCartHandler=(item,Qty) =>{
-        const updatedCandyDetails=candys.map((element) =>{
+        const updatedCandyDetails=props.candyDetails.map((element) =>{
             if(element.name===item.name){
                 element.qty=Number(element.qty)+Number(Qty);        
             }
             return element;
         })
-        console.log(updatedCandyDetails)
         updateCandys(updatedCandyDetails);
+        props.updateCandyDetails(updatedCandyDetails);
         addItemToCartAPI(updatedCandyDetails);  
     }
 
     const removeItemToCartAPI= async (updatedCandyDetails) =>{
         try{ 
-           await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json",{
-            updatedCandyDetails: updatedCandyDetails
-             }); 
+            await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json",{
+                updatedCandyDetails: updatedCandyDetails
+             });
+            await axios.patch("https://medicine-shop-4c668-default-rtdb.firebaseio.com/candys.json",{
+                newCandyData: updatedCandyDetails
+             });   
          } catch(error){
            console.log(error);
          }

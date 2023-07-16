@@ -59,7 +59,7 @@ function App() {
   }
 
   return(
-    <CartProvider candyDetails={candyDetails}>
+    <CartProvider candyDetails={candyDetails} updateCandyDetails={updateCandyDetails}>
       {cartStatus && <Cart onClose={cartHideHandler}/>}
       <Header onAddCandyData={addCandyDetails} onClickCart={cartShowHandler}/>
       <CandysAvailable candysAvailable={candyDetails}/> 
