@@ -10,7 +10,9 @@ const CartProvider=(props) =>{
         const getCartItemsAPI= async () =>{
             try{
                 const response=await axios.get("https://medicine-shop-4c668-default-rtdb.firebaseio.com/cart.json");
-                updateCandys(response.data.updatedCandyDetails);
+                if(response.data!==null){
+                    updateCandys(response.data.updatedCandyDetails);
+                }
             } catch(error){
                 console.log(error);
             }
@@ -40,6 +42,7 @@ const CartProvider=(props) =>{
             }
             return element;
         })
+        console.log(updatedCandyDetails)
         updateCandys(updatedCandyDetails);
         addItemToCartAPI(updatedCandyDetails);  
     }

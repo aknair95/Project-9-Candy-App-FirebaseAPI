@@ -25,7 +25,9 @@ function App() {
     const getCandysAPI= async () =>{
         try{
             const response=await axios.get("https://medicine-shop-4c668-default-rtdb.firebaseio.com/candys.json");
-            updateCandyDetails(response.data.newCandyData);
+            if(response.data!==null){
+              updateCandyDetails(response.data.newCandyData);
+            }
         } catch(error){
             console.log(error);
         }

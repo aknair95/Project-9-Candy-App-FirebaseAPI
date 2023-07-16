@@ -4,6 +4,7 @@ import classes from "./cart.module.css";
 import CartContext from "../../store/cartContext";
 import classes1 from "./cartItem.module.css";
 
+
 const Cart=(props) =>{
     const cartItemsCtx=useContext(CartContext); 
 
@@ -23,6 +24,13 @@ const Cart=(props) =>{
     const onClickAddHandler=(e) =>{                     // function to inc. qty of cart item by 1
         const item={name: e.target.name};
         cartItemsCtx.addItem(item,1);
+    }
+
+    const orderBtnHandler=() =>{
+        alert("!!! ORDER PLACED !!!");
+        cartItemsCtx.candyDetails.map((element) =>{
+            cartItemsCtx.removeItem(element,element.qty);
+        })
     }
                          
     const cartItems=(
@@ -60,7 +68,7 @@ const Cart=(props) =>{
                 </div>
                 <div className={classes.actions}>
                     <button className={classes.buttonClose} onClick={props.onClose}>Close</button>
-                    {cartItemsStatus && <button className={classes.buttonOrder}>Order</button>}
+                    {cartItemsStatus && <button className={classes.buttonOrder} onClick={orderBtnHandler}>Order</button>}
                 </div>
             </div>
         </Modal>    
